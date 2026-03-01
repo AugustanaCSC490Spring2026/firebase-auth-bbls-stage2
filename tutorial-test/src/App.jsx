@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState("")
 
   function handleChange(e) {
-    const { name, value } = e.target 
+    const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -34,34 +34,26 @@ function App() {
 
   return (
     <div className="card">
-      <h1>Login</h1>
-        {/* <table>
-          <tbody>
-          <tr>
-            <td>
-              <label>Email</label>  
-             <input
-             type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              />
-            </td>
-            <td>
-               <label>Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-              </td>
-            </tr>
-          </tbody>
-        </table> */}
-        
+      <img src  = "/images/logo.png" alt="Logo" width="200" height="200"/>
+      <form onSubmit={handleSubmit}>
+        <p><label>Email: </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={formData.email}
+          onChange={handleChange}
+        /></p>
+        <p>
+        <label>Password: </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        </p>
 
         {error && <p className="error">{error}</p>}
 
