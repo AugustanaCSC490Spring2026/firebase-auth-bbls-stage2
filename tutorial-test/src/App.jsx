@@ -57,13 +57,16 @@ function App() {
 
         {error && <p className="error">{error}</p>}
 
-        {/* <button
+        <button
           type="submit"
           disabled={!formData.email || !formData.password}
         >
           Login
-        </button> */}
-      <button className="gsi-material-button">
+        </button>
+      </form>
+
+
+      <button className="gsi-material-button" style={{ marginTop: '15px' }}>
         <div className="gsi-material-button-state"></div>
         <div className="gsi-material-button-content-wrapper">
           <div className="gsi-material-button-icon">
