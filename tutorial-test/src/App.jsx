@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { auth, googleProvider } from './Firebase';
+import { signInWithPopup } from 'firebase/auth';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -16,6 +18,21 @@ function App() {
       [name]: value
     }))
   }
+
+  const handleGoogleLogin = async () => {
+  try {
+    // This opens the little Google pop-up xwindow
+    const result = await signInWithPopup(auth, googleProvider);
+    
+    // If successful, you now have the user's info!
+    console.log("Success! Logged in as:", result.user.displayName);
+    alert("Welcome " + result.user.displayName);
+    
+  } catch (error) {
+    console.error("Login failed:", error.message);
+    setError("Failed to sign in. Try again!");
+  }
+};
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -66,7 +83,12 @@ function App() {
       </form>
 
 
-      <button className="gsi-material-button" style={{ marginTop: '15px' }}>
+      <button 
+        type="button" // Prevents the form from submitting/refreshing
+        onClick={handleGoogleLogin} // Triggers your login function
+        className="gsi-material-button" 
+        style={{ marginTop: '15px' }}
+      >
         <div className="gsi-material-button-state"></div>
         <div className="gsi-material-button-content-wrapper">
           <div className="gsi-material-button-icon">
